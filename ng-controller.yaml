@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  labels:
+    name: ui
+  name: ui-controller
+spec:
+  replicas: 2
+  selector:
+    name: ui
+  template:
+    metadata:
+      labels:
+        name: ui
+    spec:
+      containers:
+      - image: ng-ui-fe:v1
+        name: ui
+        ports:
+        - containerPort: 4200
+          name: http-server
